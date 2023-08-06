@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Edad</title>
+</head>
+<body>
+    <h1>Ingrese su fecha de nacimiento</h1>
+    <form>
+        <label for="birthdate">Fecha de Nacimiento:</label>
+        <input type="date" id="birthdate" required>
+        <button type="button" onclick="calculateAge()">Calcular Edad</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+function calculateAge() {
+    // Obtener la fecha de nacimiento ingresada por el usuario
+    const birthdateString = document.getElementById('birthdate').value;
+    const birthdate = new Date(birthdateString);
+
+    // Obtener la fecha actual
+    const today = new Date();
+
+    // Calcular la diferencia en milisegundos entre la fecha actual y la fecha de nacimiento
+    const difference = today - birthdate;
+
+    // Convertir la diferencia a años, meses y días
+    const ageDate = new Date(difference);
+    const years = ageDate.getUTCFullYear() - 1970;
+    const months = ageDate.getUTCMonth();
+    const days = ageDate.getUTCDate() - 1;
+
+    // Mostrar el resultado
+    document.getElementById('result').innerText = `Tienes ${years} años, ${months} meses y ${days} días de edad.`;
+}
+</script>
+
+</body>
+</html>
